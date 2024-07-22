@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Webassembly</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        #html_by_markdown {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            padding: 8px;
+        }
+        #myButton {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1 id="output"></h1> -->
+    <!-- <p id="enc_data">加密串: Hello crypto</p>
+    <p id="token" style="width: 300px;white-space: wrap;">token:</p>
+    <p id="dec_data">解密：</p> -->
+    <div class="container">
+        <textarea name="" id="markdown_text"></textarea>
+        <button id="myButton">转html</button>
+        <div id="html_by_markdown"></div>
+    </div>
+    
+    <script type="module">
+        import init, { 
+            // encrypty_message, 
+            // decrypt_message 
+            markdown_2_html
+        } from '../pkg/hello_wasm.js';
+        const wasm = await init();
+        // run();
+        // const greeting = greet('WebAssembly');
+        // document.getElementById('output').innerText = greeting;
+        // const enc_data = encrypty_message("Hello crypto");
+        // console.log(">>>>enc_data", enc_data);
+        // document.getElementById('token').innerText += enc_data;
+
+        // console.log(">>>>decrypt_message", decrypt_message);
+        // const dec_data = decrypt_message(enc_data);
+        // document.getElementById('dec_data').innerText += dec_data;
+        // console.log(enc_data);
+        // const markdown_text = document.getElementById('markdown_text').value;
+        // const html = markdown_2_html(markdown_text || "Hello, **世界**!");
+
+        // const html_by_markdown = document.getElementById('html_by_markdown');
+        // html_by_markdown.innerHTML = html;
+
+        function change() {
+            const markdown_text = document.getElementById('markdown_text').value;
+            const html = markdown_2_html(markdown_text || "Hello, **世界**!");
+
+            const html_by_markdown = document.getElementById('html_by_markdown');
+            html_by_markdown.innerHTML = html;
+        }
+
+        document.getElementById('myButton').addEventListener('click', change);
+    </script>
+    <script>
+    </script>
+</body>
+</html>
